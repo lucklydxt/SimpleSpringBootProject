@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdxc.dao.ZdxcDao">
+
+    <resultMap id="ZdxcMap" type="com.zdxc.entity.Zdxc">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createtime" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="updatetime" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--新增一行，主键id自增-->
+    <insert id="insert" parameterType="com.zdxc.entity.Zdxc"  useGeneratedKeys="true" keyProperty="id">
+        insert into zdxc(code,status,createtime,updatetime) values(#{code},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <select id="select" resultMap="ZdxcMap" parameterType="Long">
+        select
+         id,code,status
+         from zdxc
+         where id=#{id}
+    </select>
+
+    <select id="selectByCode" resultType="java.lang.Integer" parameterType="com.zdxc.entity.Zdxc">
+        select
+         count(1)
+          from zdxc
+          where code=#{code}
+    </select>
+
+    <update id="update" parameterType="com.zdxc.entity.Zdxc" >
+        update zdxc set updatetime=#{createTime} where code=#{code}
+    </update>
+</mapper>
