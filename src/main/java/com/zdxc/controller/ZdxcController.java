@@ -17,7 +17,7 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping("/")
+@RequestMapping("zdxc")
 public class ZdxcController {
 
     @Resource

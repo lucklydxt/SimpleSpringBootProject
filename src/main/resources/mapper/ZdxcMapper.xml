@@ -7,17 +7,16 @@
         <result property="code" column="code" jdbcType="VARCHAR"/>
         <result property="createTime" column="createtime" jdbcType="VARCHAR"/>
         <result property="updateTime" column="updatetime" jdbcType="VARCHAR"/>
-        <result property="status" column="status" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--新增一行，主键id自增-->
     <insert id="insert" parameterType="com.zdxc.entity.Zdxc"  useGeneratedKeys="true" keyProperty="id">
-        insert into zdxc(code,status,createtime,updatetime) values(#{code},#{status},#{createTime},#{updateTime})
+        insert into zdxc(code,createtime,updatetime) values(#{code},#{createTime},#{updateTime})
     </insert>
 
     <select id="select" resultMap="ZdxcMap" parameterType="Long">
         select
-         id,code,status
+         id,code
          from zdxc
          where id=#{id}
     </select>

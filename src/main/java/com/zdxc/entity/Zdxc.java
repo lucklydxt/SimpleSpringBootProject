@@ -14,5 +14,4 @@ public class Zdxc implements Serializable {
     private String code;
     private String createTime;
     private String updateTime;
-    private String status;
 }
